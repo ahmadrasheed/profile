@@ -25,7 +25,7 @@
             <div class="grid grid-cols-6 gap-6">
               <div class="col-span-6 sm:col-span-3">
                 <label for="first_name" class="block text-sm font-medium text-gray-700">الاسم الاول</label>
-                <input type="text" name="first_name" id="fname" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md">
+                <input type="text" name="fname" id="fname" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md">
               </div>
 
               <div class="col-span-6 sm:col-span-3">

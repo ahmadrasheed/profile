@@ -47,9 +47,9 @@ class TeachersController extends Controller
         $newTeacher->lname=$request->input('lname');
         $newTeacher->birth=$request->input('birth');
 
-        $newTeacher.save();
+        $newTeacher->save();
 
-        return view('teachers.index');
+        return view('teachers.index',['teachers'=>Teacher::all()]);
 
 
 
