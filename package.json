@@ -12,7 +12,7 @@
     "devDependencies": {
         "autoprefixer": "^10.4.2",
         "axios": "^0.25",
-        "laravel-mix": "^6.0.6",
+        "laravel-mix": "^6.0.43",
         "lodash": "^4.17.19",
         "postcss": "^8.4.8",
         "tailwind-watch": "^0.0.6",

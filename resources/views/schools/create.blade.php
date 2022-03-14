@@ -1,4 +1,4 @@
-@extends('teachers.layout')
+@extends('schools.layout')
 
 @section('content')
 
@@ -13,7 +13,7 @@
       <div class="px-4 sm:px-0">
         <h3 class="text-lg font-medium leading-6 text-gray-900"></h3>
         <p class="mt-1 text-sm text-gray-600">
-          المعلومات الشخصية للمدرس.
+          المدارس المشمولة بتدريس الحاسوب في تربية نينوى
         </p>
       </div>
     </div>
@@ -24,17 +24,17 @@
           <div class="px-4 py-5 bg-white sm:p-6">
             <div class="grid grid-cols-6 gap-6">
               <div class="col-span-6 sm:col-span-3">
-                <label for="first_name" class="block text-sm font-medium text-gray-700">الاسم الاول</label>
+                <label for="first_name" class="block text-sm font-medium text-gray-700">اسم المدرسة </label>
                 <input type="text" name="fname" id="fname" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md">
               </div>
 
               <div class="col-span-6 sm:col-span-3">
-                <label for="last_name" class="block text-sm font-medium text-gray-700">الاسم الثاني</label>
+                <label for="last_name" class="block text-sm font-medium text-gray-700">نوع المدرسة</label>
                 <input type="text" name="lname" id="last_name" autocomplete="family-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
               </div>
 
               <div class="col-span-6 sm:col-span-4">
-                <label for="birth" class="block text-sm font-medium text-gray-700">التولد</label>
+                <label for="birth" class="block text-sm font-medium text-gray-700">عنوان المدرسة</label>
                 <input type="text" name="birth" id="birth" autocomplete="birth" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
               </div>
 
@@ -54,12 +54,12 @@
               </div>
 
               <div class="col-span-6 sm:col-span-6 lg:col-span-2">
-                <label for="city" class="block text-sm font-medium text-gray-700">City</label>
+                <label for="city" class="block text-sm font-medium text-gray-700">المحافظة</label>
                 <input type="text" name="city" id="city" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
               </div>
 
               <div class="col-span-6 sm:col-span-3 lg:col-span-2">
-                <label for="state" class="block text-sm font-medium text-gray-700">State / Province</label>
+                <label for="state" class="block text-sm font-medium text-gray-700">القضاء</label>
                 <input type="text" name="state" id="state" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
               </div>
 

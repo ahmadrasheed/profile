@@ -2,10 +2,8 @@
 
 @section('content')
 
-<h1 class="text-center bor">  </h1>
-
-
-<!-- component -->
+@if (isset($teacher))
+    
 
 <div class="mt-10 sm:mt-0">
   <div class="md:grid md:grid-cols-3 md:gap-6">
@@ -18,33 +16,34 @@
       </div>
     </div>
     <div class="mt-5 md:mt-0 md:col-span-2">
-      <form action="{{route('teachers.store')}}" method="POST">
+      <form action="{{route('teachers.update',$teacher->id)}}" method="POST">
           @csrf
+          @method('PUT')
         <div class="shadow overflow-hidden sm:rounded-md">
           <div class="px-4 py-5 bg-white sm:p-6">
             <div class="grid grid-cols-6 gap-6">
               <div class="col-span-6 sm:col-span-3">
                 <label for="first_name" class="block text-sm font-medium text-gray-700">الاسم الاول</label>
-                <input type="text" name="fname" id="fname" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md">
+                <input type="text" name="fname" value="{{$teacher->fname}}" id="fname" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md">
               </div>
 
               <div class="col-span-6 sm:col-span-3">
                 <label for="last_name" class="block text-sm font-medium text-gray-700">الاسم الثاني</label>
-                <input type="text" name="lname" id="last_name" autocomplete="family-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                <input type="text" name="lname" value="{{$teacher->lname}}" id="last_name" autocomplete="family-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
               </div>
 
               <div class="col-span-6 sm:col-span-4">
-                <label for="birth" class="block text-sm font-medium text-gray-700">التولد</label>
-                <input type="text" name="birth" id="birth" autocomplete="birth" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                <label for="email_address" class="block text-sm font-medium text-gray-700">التولد</label>
+                <input type="text" name="birth" value="{{$teacher->birth}}" id="email_address" autocomplete="email" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
               </div>
 
               <div class="col-span-6 sm:col-span-3">
-                <label for="side" class="block text-sm font-medium text-gray-700">الجانب من المدينة</label>
+                <label for="side" class="block text-sm font-medium text-gray-700">Country / Region</label>
                 <select id="side" name="side" autocomplete="side" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                  <option>الجانب الايسر</option>
-                  <option>الجانب الايمن</option>
-                  <option>ممثلية دهوك</option>
-                  <option>ممثلية اربيل</option>
+                  <option  {{$teacher->side=='الجانب الايسر'?'selected':''}}>الجانب الايسر</option>
+                  <option  {{$teacher->side=='الجانب الايمن'?'selected':''}}>الجانب الايمن</option>
+                  <option  {{$teacher->side=='ممثلية دهوك'?'selected':''}}>ممثلية دهوك</option>
+                  <option  {{$teacher->side=='ممثلية اربيل'?'selected':''}}>ممثلية اربيل</option>
                 </select>
               </div>
 
@@ -80,7 +79,6 @@
   </div>
 </div>
 
-@endsection
-@section('scripts')
+@endif
 
-@endsection()
+@endsection

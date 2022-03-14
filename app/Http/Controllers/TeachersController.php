@@ -40,13 +40,14 @@ class TeachersController extends Controller
         $request->validate([
             'fname'=>'required',
             'lname'=>'required',
-            'birth'=>'numeric'
+            'birth'=>'numeric',
+            'side' =>'required'
         ]);
         $newTeacher=new Teacher();
         $newTeacher->fname=$request->input('fname');
         $newTeacher->lname=$request->input('lname');
         $newTeacher->birth=$request->input('birth');
-
+        $newTeacher->side=$request->input('side');
         $newTeacher->save();
 
         return view('teachers.index',['teachers'=>Teacher::all()]);
@@ -72,9 +73,10 @@ class TeachersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Teacher $teacher)
     {
-        //
+       // dd('no');
+        return view('teachers.edit',['teacher'=>$teacher]);
     }
 
     /**
@@ -84,9 +86,15 @@ class TeachersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Teacher $teacher)
     {
-        //
+        $teacher->fname=$request->input('fname');
+        $teacher->lname=$request->input('lname');
+        $teacher->birth=$request->input('birth');
+        $teacher->side=$request->input('side');
+        $teacher->update();
+
+        return view('teachers.index',['teachers'=>Teacher::all()]);
     }
 
     /**
@@ -95,8 +103,9 @@ class TeachersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Teacher $teacher )
     {
-        //
+        $teacher->delete();
+        return view('teachers.index',['teachers'=>Teacher::all()]);
     }
 }

@@ -24,6 +24,8 @@ return new class extends Migration
             $table->string('nickname')->nullable();
             $table->integer('birth')->nullable();
             $table->string('subject')->nullable();
+            $table->string('mobile')->nullable();
+            $table->string('side')->nullable();
             
             $table->timestamps();
         });
