@@ -507,6 +507,8 @@ class ComposerStaticInit8e2996cfdaa6a5f0f9058defab288b64
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\SchoolsController' => __DIR__ . '/../..' . '/app/Http/Controllers/SchoolsController.php',
+        'App\\Http\\Controllers\\TeachersController' => __DIR__ . '/../..' . '/app/Http/Controllers/TeachersController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',

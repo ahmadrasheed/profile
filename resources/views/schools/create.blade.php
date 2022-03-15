@@ -13,29 +13,29 @@
       <div class="px-4 sm:px-0">
         <h3 class="text-lg font-medium leading-6 text-gray-900"></h3>
         <p class="mt-1 text-sm text-gray-600">
-          المدارس المشمولة بتدريس الحاسوب في تربية نينوى
+          اضافة مدرسة جديدة (مشمولة بتدريس مادة الحاسوب)
         </p>
       </div>
     </div>
     <div class="mt-5 md:mt-0 md:col-span-2">
-      <form action="{{route('teachers.store')}}" method="POST">
+      <form action="{{route('schools.store')}}" method="POST">
           @csrf
         <div class="shadow overflow-hidden sm:rounded-md">
           <div class="px-4 py-5 bg-white sm:p-6">
             <div class="grid grid-cols-6 gap-6">
               <div class="col-span-6 sm:col-span-3">
                 <label for="first_name" class="block text-sm font-medium text-gray-700">اسم المدرسة </label>
-                <input type="text" name="fname" id="fname" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md">
+                <input type="text" name="name" id="fname" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md">
               </div>
 
               <div class="col-span-6 sm:col-span-3">
                 <label for="last_name" class="block text-sm font-medium text-gray-700">نوع المدرسة</label>
-                <input type="text" name="lname" id="last_name" autocomplete="family-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                <input type="text" name="type" id="last_name" autocomplete="family-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
               </div>
 
               <div class="col-span-6 sm:col-span-4">
                 <label for="birth" class="block text-sm font-medium text-gray-700">عنوان المدرسة</label>
-                <input type="text" name="birth" id="birth" autocomplete="birth" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                <input type="text" name="address" id="birth" autocomplete="birth" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
               </div>
 
               <div class="col-span-6 sm:col-span-3">
@@ -49,7 +49,7 @@
               </div>
 
               <div class="col-span-6">
-                <label for="street_address" class="block text-sm font-medium text-gray-700">Street address</label>
+                <label for="street_address" class="block text-sm font-medium text-gray-700">العنوان</label>
                 <input type="text" name="street_address" id="street_address" autocomplete="street-address" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
               </div>
 

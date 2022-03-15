@@ -15,10 +15,7 @@ return new class extends Migration
     {
         Schema::create('teachers', function (Blueprint $table) {
             $table->id();
-            $table->foreign('teacher_id')
-                    ->references('id')
-                    ->on('teachers')
-                    ->onCascade('delete');
+            $table->integer('school_id');
             $table->string('fname');
             $table->string('lname')->nullable();
             $table->string('nickname')->nullable();
