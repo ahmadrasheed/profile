@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Teacher;
+use App\Models\School;
 
 class TeachersController extends Controller
 {
@@ -26,7 +27,8 @@ class TeachersController extends Controller
      */
     public function create()
     {
-        return view('teachers.create');
+        $schools=School::orderBy('name')->get();
+        return view('teachers.create',['schools'=>$schools]);
     }
 
     /**
@@ -37,15 +39,20 @@ class TeachersController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request->all());
+
+       // dd($request->input('school_id'));
         $request->validate([
             'fname'=>'required',
             'lname'=>'required',
+            'school_id'=>'required|numeric',
             'birth'=>'numeric',
             'side' =>'required'
         ]);
         $newTeacher=new Teacher();
         $newTeacher->fname=$request->input('fname');
         $newTeacher->lname=$request->input('lname');
+        $newTeacher->school_id=$request->input('school_id');
         $newTeacher->birth=$request->input('birth');
         $newTeacher->side=$request->input('side');
         $newTeacher->save();
@@ -108,4 +115,31 @@ class TeachersController extends Controller
         $teacher->delete();
         return view('teachers.index',['teachers'=>Teacher::all()]);
     }
-}
+
+    public function selectSearch(Request $request){
+
+        $movies = [];
+
+        
+            
+            if(!empty($request->input('q'))){
+                
+                $search = $request->q;
+                $movies =School::select("id", "name")
+                        ->where('name', 'LIKE', "%$search%")
+                        ->get();
+                }
+                else
+                    {
+                        $search = $request->q;
+                        $movies =School::select("id", "name")
+                                ->get();
+                    }
+
+
+
+        return response()->json($movies);
+            
+
+    }
+}//end class

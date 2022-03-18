@@ -439,6 +439,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .col-span-6 {
   grid-column: span 6 / span 6;
 }
+.col-span-3 {
+  grid-column: span 3 / span 3;
+}
 .m-3 {
   margin: 0.75rem;
 }
@@ -535,6 +538,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .w-6 {
   width: 1.5rem;
+}
+.w-56 {
+  width: 14rem;
 }
 .min-w-full {
   min-width: 100%;

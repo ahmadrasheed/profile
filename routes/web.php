@@ -14,3 +14,7 @@ Route::get('/', function () {
 Route::resource('teachers',TeachersController::class);
 
 Route::resource('schools',SchoolsController::class);
+
+
+//for handling auto completions select dropdown menu
+Route::get('ajax-autocomplete-search', [TeachersController::class,'selectSearch']);
