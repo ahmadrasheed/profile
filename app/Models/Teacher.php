@@ -12,4 +12,14 @@ class Teacher extends Model
     protected $fillable=[
         'fname','lname','birth','nickname','subject'
     ];
+
+public function school(){
+
+    return $this->belongsTo(School::class)->withDefault([
+        'name' => 'No School yet',
+    ]);
+}
+
+
+
 }

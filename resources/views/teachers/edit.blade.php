@@ -1,5 +1,15 @@
 @extends('teachers.layout')
 
+@section('scripts1')
+    {{-- for auto completion select dropdown menu Select2 js --}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+
+@endsection
+
+
+
 @section('content')
 
 @if (isset($teacher))
@@ -25,16 +35,45 @@
               <div class="col-span-6 sm:col-span-3">
                 <label for="first_name" class="block text-sm font-medium text-gray-700">الاسم الاول</label>
                 <input type="text" name="fname" value="{{$teacher->fname}}" id="fname" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md">
+                 
+                @error('fname')
+                   <div class="text-rose-600">{{$message}}</div>
+                @enderror
               </div>
 
               <div class="col-span-6 sm:col-span-3">
                 <label for="last_name" class="block text-sm font-medium text-gray-700">الاسم الثاني</label>
                 <input type="text" name="lname" value="{{$teacher->lname}}" id="last_name" autocomplete="family-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                 
+                @error('lname')
+                    <div class="text-rose-600">{{$message}}</div>
+                @enderror
               </div>
+
+              <div class="col-span-6 sm:col-span-3">
+                <label for="livesearch" class="block text-sm font-medium text-gray-700">اختر مدرسة</label>
+                <select class="livesearch mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm " name="livesearch" text="{{Old('livesearch')}}"> 
+                  {{Old('livesearch')}}  
+                 <option value='{{$teacher->school_id}}'>{{$school->name}}</option>
+                </select>
+                @error('livesearch')
+                  <div class="text-rose-600">{{$message}}</div>
+                @enderror
+              </div>
+
+
+
+
+
+
 
               <div class="col-span-6 sm:col-span-4">
                 <label for="email_address" class="block text-sm font-medium text-gray-700">التولد</label>
                 <input type="text" name="birth" value="{{$teacher->birth}}" id="email_address" autocomplete="email" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                 
+                @error('birth')
+                    <div class="text-rose-600">{{$message}}</div>
+                @enderror
               </div>
 
               
@@ -83,3 +122,27 @@
 @endif
 
 @endsection
+
+@section('scripts2')
+<script type="text/javascript">
+  $('.livesearch').select2({
+      placeholder: 'اكتب اسم المدرسة ...',
+      ajax: {
+          url: '/ajax-autocomplete-search',
+          dataType: 'json',
+          delay: 250,
+          processResults: function (data) {
+              return {
+                  results: $.map(data, function (item) {
+                      return {
+                          text: item.name,
+                          id: item.id
+                      }
+                  })
+              };
+          },
+          cache: true
+      }
+  });
+</script>
+@endsection()

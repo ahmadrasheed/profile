@@ -35,17 +35,23 @@
             <div class="grid grid-cols-6 gap-6">
               <div class="col-span-6 sm:col-span-3">
                 <label for="first_name" class="block text-sm font-medium text-gray-700">الاسم الاول</label>
-                <input type="text" name="fname" id="fname" autocomplete="given-name" class="mt-1 py-2 px-3  block w-full shadow-sm sm:text-sm  rounded-md">
+                <input type="text" name="fname" value="{{Old('fname')}}" id="fname" autocomplete="given-name" class="mt-1 py-2 px-3  block w-full shadow-sm sm:text-sm  rounded-md">
+                @error('fname')
+                  <div class="text-rose-600">{{$message}}</div>
+                @enderror
               </div>
 
               <div class="col-span-6 sm:col-span-3">
                 <label for="last_name" class="block  text-sm font-medium text-gray-700">الاسم الثاني</label>
-                <input type="text" name="lname" id="last_name" autocomplete="family-name" class="mt-1 py-2 px-3 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                <input type="text" name="lname" value="{{Old('lname')}}" id="last_name" autocomplete="family-name" class="mt-1 py-2 px-3 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                @error('lname')
+                  <div class="text-rose-600">{{$message}}</div>
+                @enderror
               </div>
 
               <div class="col-span-6 sm:col-span-3">
                 <label for="school_id" class="block text-sm font-medium text-gray-700">المدرسة الحالية</label>
-                <select id="school_id" name="school_id" autocomplete="school_id" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                <select id="school_id" name="school_id" value="{{Old('school_id')}}" autocomplete="school_id" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                   <option hidden> اختر مدرسة</option>
                   @foreach ($schools as $school)
                     <option value="{{$school->id}}">{{$school->name }}</option>
@@ -56,14 +62,21 @@
 
               <div class="col-span-3 sm:col-span-3">
                 <label for="birth" class="block text-sm font-medium text-gray-700">التولد</label>
-                <input type="text" name="birth" id="birth" autocomplete="birth" class="py-2 px-3 mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                <input type="text" name="birth" value="{{Old('birth')}}" id="birth" autocomplete="birth" class="py-2 px-3 mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                @error('birth')
+                <div class="text-rose-600">{{$message}}</div>
+              @enderror
               </div>
 
               <div class="col-span-6 sm:col-span-3">
                 <label for="livesearch" class="block text-sm font-medium text-gray-700">اختر مدرسة</label>
-                <select class="livesearch mt-1 block w-full py-4 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm " name="livesearch"> 
-
+                <select class="livesearch mt-1 block w-full py-4 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm " name="livesearch" text="{{Old('livesearch')}}"> 
+                  {{Old('livesearch')}}  
+                 
                 </select>
+                @error('livesearch')
+                <div class="text-rose-600">{{$message}}</div>
+              @enderror
               </div>
               <div class="col-span-6 sm:col-span-3">
                 <label for="side" class="block text-sm font-medium text-gray-700">الجانب من المدينة</label>

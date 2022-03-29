@@ -71,9 +71,9 @@ class SchoolsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(School $school)
     {
-        //
+        return view('schools.edit')->with('school',$school);
     }
  
 
@@ -84,9 +84,21 @@ class SchoolsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, School $school)
     {
-        //
+        $request->validate([
+            'name'=>'required',
+            'address'=>'nullable',
+            'side'=>'nullable',
+
+        ]);
+        $school->name=$request->input('name');
+        $school->address=$request->input('address');
+        $school->side=$request->input('side');
+        $school->update();
+
+  
+        return redirect()->route('schools.index')->with('success','تم تعديل البيانات بنجاح');
     }
 
     /**
@@ -98,6 +110,6 @@ class SchoolsController extends Controller
     public function destroy(School $school)
     {
         $school->delete();
-        return redirect()->route('schools.index')->with();
+        return redirect()->route('schools.index');
     }
 }

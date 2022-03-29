@@ -7,6 +7,9 @@
     <title>@yield('title')</title>
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{url('css/main.css')}}">
+
+    @yield('scripts1')
+
 </head>
 <body>
 
@@ -15,12 +18,14 @@
         <li><a text-shadow href="{{route('teachers.index')}}">الصفحة الرئيسية</a></li>
         <li><a href="{{route('teachers.index')}}">شعبة التعليم الالكتروني</a></li>
         <li><a href="{{route('teachers.create')}}">ادخال المعلومات </a></li>
+        <li><a href="{{route('teachers.index')}}">مدرسي الحاسوب</a></li>
+        <li><a href="{{route('schools.index')}}">المدارس المشمولة</a></li>
         <li><a href="{{route('teachers.index')}}">عن المشروع</a></li>
     </ul>
     </nav>
     
 @yield('content')
-@yield('scripts')
+@yield('scripts2')
 
 
 

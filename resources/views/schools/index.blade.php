@@ -1,4 +1,4 @@
-@extends('teachers.layout')
+@extends('schools.layout')
 
 @section('content')
 <div class="max-w-4xl mx-auto mt-8">

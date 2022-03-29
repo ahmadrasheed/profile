@@ -16,6 +16,14 @@ class TeachersController extends Controller
      */
     public function index()
     {
+     
+        $teachers=Teacher::all();
+        $schools=School::all();
+        
+
+
+
+
         $teachers=Teacher::all();
         return view('teachers.index',['teachers'=>$teachers]);
     }
@@ -28,6 +36,7 @@ class TeachersController extends Controller
     public function create()
     {
         $schools=School::orderBy('name')->get();
+        
         return view('teachers.create',['schools'=>$schools]);
     }
 
@@ -39,20 +48,22 @@ class TeachersController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        //dd($request->all());
+        //dd($request->input('livesearch'));
 
-       // dd($request->input('school_id'));
+       // dd($request->all());
         $request->validate([
-            'fname'=>'required',
-            'lname'=>'required',
-            'school_id'=>'required|numeric',
+            'fname'=>'required|max:256',
+            'lname'=>'required|max:256',
+            'school_id'=>'required|numeric|max:256',
             'birth'=>'numeric',
-            'side' =>'required'
+            'side' =>'required',
+            'livesearch' =>'required|max:256'
         ]);
         $newTeacher=new Teacher();
         $newTeacher->fname=$request->input('fname');
         $newTeacher->lname=$request->input('lname');
-        $newTeacher->school_id=$request->input('school_id');
+        $newTeacher->school_id= $request->input('livesearch');
         $newTeacher->birth=$request->input('birth');
         $newTeacher->side=$request->input('side');
         $newTeacher->save();
@@ -82,8 +93,18 @@ class TeachersController extends Controller
      */
     public function edit(Teacher $teacher)
     {
-       // dd('no');
-        return view('teachers.edit',['teacher'=>$teacher]);
+       dd($teacher->school->name);
+       // incase school_id of the teacher match no record in schools table.
+       $school=new School;
+       if(School::find($teacher->school_id)===null)
+            $school->name='No School';
+       else
+            $school=School::find($teacher->school_id);
+     
+        return view('teachers.edit',[
+            'teacher'=>$teacher,
+            'school'=>$school,
+        ]);
     }
 
     /**
@@ -95,6 +116,13 @@ class TeachersController extends Controller
      */
     public function update(Request $request, Teacher $teacher)
     {
+        $request->validate([
+            'fname'=>'required|max:256',
+            'lname'=>'required|max:256',
+            'birth'=>'required|numeric',
+            'livesearch'=>'required',
+
+        ]);
         $teacher->fname=$request->input('fname');
         $teacher->lname=$request->input('lname');
         $teacher->birth=$request->input('birth');
@@ -116,12 +144,11 @@ class TeachersController extends Controller
         return view('teachers.index',['teachers'=>Teacher::all()]);
     }
 
+    //to populate select dropdown menu with schools names using Ajax call with selecet2    javascript 
     public function selectSearch(Request $request){
-
+        //q is the paramete that is sent with the request in Ajax call, while to save the selected value use $request-input('livesearch') to validate and save to DB.
         $movies = [];
 
-        
-            
             if(!empty($request->input('q'))){
                 
                 $search = $request->q;
@@ -136,10 +163,6 @@ class TeachersController extends Controller
                                 ->get();
                     }
 
-
-
         return response()->json($movies);
-            
-
     }
 }//end class
