@@ -93,7 +93,7 @@ class TeachersController extends Controller
      */
     public function edit(Teacher $teacher)
     {
-       dd($teacher->school->name);
+       //dd($teacher->school->name);
        // incase school_id of the teacher match no record in schools table.
        $school=new School;
        if(School::find($teacher->school_id)===null)

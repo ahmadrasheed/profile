@@ -20,7 +20,7 @@
     <div class="md:col-span-1">
       <div class="px-4 sm:px-0">
         <h3 class="text-lg font-medium leading-6 text-gray-900"></h3>
-        <p class="mt-1 text-sm text-gray-600">
+        <p class="mt-1 text-sm text-gray-700">
           المعلومات الشخصية للمدرس.
         </p>
       </div>
@@ -34,16 +34,16 @@
           <div class="px-4 py-5 bg-white sm:p-6">
             <div class="grid grid-cols-6 gap-6">
               <div class="col-span-6 sm:col-span-3">
-                <label for="first_name" class="block text-sm font-medium text-gray-700">الاسم الاول</label>
-                <input type="text" name="fname" value="{{Old('fname')}}" id="fname" autocomplete="given-name" class="mt-1 py-2 px-3  block w-full shadow-sm sm:text-sm  rounded-md">
+                <label for="first_name" class="block text-sm font-medium">الاسم الاول</label>
+                <input type="text" name="fname" value="{{Old('fname')}}" id="fname" autocomplete="given-name" class="mt-1 py-2 px-3  block w-full shadow sm:text-sm border">
                 @error('fname')
                   <div class="text-rose-600">{{$message}}</div>
                 @enderror
               </div>
 
               <div class="col-span-6 sm:col-span-3">
-                <label for="last_name" class="block  text-sm font-medium text-gray-700">الاسم الثاني</label>
-                <input type="text" name="lname" value="{{Old('lname')}}" id="last_name" autocomplete="family-name" class="mt-1 py-2 px-3 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                <label for="last_name" class="block  text-sm font-medium text-black">الاسم الثاني</label>
+                <input type="text" name="lname" value="{{Old('lname')}}" id="last_name" autocomplete="family-name" class="mt-1 py-2 px-3 focus:ring-indigo-500  block w-full shadow-sm sm:text-sm border border-violet-500">
                 @error('lname')
                   <div class="text-rose-600">{{$message}}</div>
                 @enderror
