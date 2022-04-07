@@ -15,9 +15,6 @@
     <ul>
         <li><a text-shadow href="{{route('teachers.index')}}">الصفحة الرئيسية</a></li>
         <li><a href="{{route('teachers.index')}}">شعبة التعليم الالكتروني</a></li>
-        <li><a href="{{route('teachers.index')}}">مدرسي الحاسوب</a></li>
-        <li><a href="{{route('schools.index')}}">المدارس المشمولة</a></li>
-        <li><a href="{{route('teachers.create')}}">ادخال المعلومات </a></li>
         <li><a href="{{route('teachers.index')}}">عن المشروع</a></li>
         @auth
             <li><a href="{{route('logout')}}">تسجيل الخروج</a></li>

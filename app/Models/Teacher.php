@@ -20,6 +20,10 @@ public function school(){
     ]);
 }
 
+public function user(){
+    return $this->hasOne(User::class);
+}
+
 
 
 }

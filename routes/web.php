@@ -3,17 +3,36 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TeachersController;
 use App\Http\Controllers\SchoolsController;
+use App\Http\Controllers\MyAuthController;
+use App\Http\Controllers\OneTeacherController;
+use App\Http\Middleware\AdminOnly;
+
+
+
 
 //Ahmad rasheed 3
+//login
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/login', function () {
+    return view('auth.login');
 });
+Route::get('/login',[MyAuthController::class,'login'])->name('login');
+Route::get('/',[MyAuthController::class,'login'])->name('login');
+Route::post('/login',[MyAuthController::class,'authenticate'])->name('login');
+Route::get('/logout',[MyAuthController::class,'logout'])->name('logout');
+
+// for a teacher 
+Route::get('/show/teacher',[OneTeacherController::class,'show'])->name('showOneTeacher')
+    ->middleware('teacher');
+
+Route::put('/update/{id}',[OneTeacherController::class,'update'])->name('updateOneTeacher')
+    ->middleware('teacher');
 
 
-Route::resource('teachers',TeachersController::class);
+// admin activities
+Route::resource('teachers',TeachersController::class)->middleware('admin');
 
-Route::resource('schools',SchoolsController::class);
+Route::resource('schools',SchoolsController::class)->middleware('admin');
 
 
 //for handling auto completions select dropdown menu
@@ -73,3 +92,4 @@ Route::get('/fcm', function () {
     dd($response);
 
 });
+

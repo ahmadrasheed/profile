@@ -33,6 +33,11 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    public function teacher()
+    {
+        return $this->belongsTo(Teacher::class);
+    }
+
     /**
      * The attributes that should be cast.
      *
