@@ -13,12 +13,12 @@ use App\Http\Middleware\AdminOnly;
 //Ahmad rasheed 3
 //login
 
-Route::get('/login', function () {
-    return view('auth.login');
-});
-Route::get('/login',[MyAuthController::class,'login'])->name('login');
-Route::get('/',[MyAuthController::class,'login'])->name('login');
-Route::post('/login',[MyAuthController::class,'authenticate'])->name('login');
+// Route::get('/login', function () {
+//     return view('auth.login');
+// });
+Route::get('/login/{fcmToken?}',[MyAuthController::class,'login'])->name('login');
+//Route::get('/',[MyAuthController::class,'login'])->name('login');
+Route::post('/login/{fcmToken?}',[MyAuthController::class,'authenticate'])->name('authenticate');
 Route::get('/logout',[MyAuthController::class,'logout'])->name('logout');
 
 // for a teacher 
@@ -40,10 +40,9 @@ Route::get('ajax-autocomplete-search', [TeachersController::class,'selectSearch'
 
 Route::get('/fcm', function () {
 
-
     $SERVER_API_KEY = 'AAAAURz1GmI:APA91bGWe5fpl9Gfnf3hxSJ3boq79RghLmazpwCwYUABr-7mo_Jc2tpvATwwEbqo_sqWYm9uWG6ELRRDL-QTvelnDWdD-nNzWdDQJuiWkz21os0dE_ybR7_LEfnK_G1b-bqQajdldk_I';
 
-    $token_1 = 'f8_M3hRlRwaJhue_VKbvfH:APA91bGDZpNCVaKDPgOtSyWl15dpN5MJmI-9lHRF6P7B1pzK9WhzVHP7DHQs8SW8q5Vd4NWIwwJC2RV9dh34Dh_YxGDFkFt4ZUOvriw3wgH58StUj-LmOQ64vSCJkOdFV-45M6Eqondu';
+    $token_1 = 'eCk2GwBMSOqOgWkfcHXGlz:APA91bH9pa8b_DeCBsQ_6ZmqZBzvIDutWAdwWxf1BL9t0mtIGJTAJRY5im43SMoGHn3ocUHpsYw4BLeZsRKUWhuLHI2HLqszWP1Br1UiScaIoXZDQPM_1wJv04-OyPDH1sTU2ruSIte1';
 
     $data = [
 

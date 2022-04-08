@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('role')->default(0);
             $table->integer('teacher_id')->unsigned();
             $table->string('name');
+            $table->string('fcmToken')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

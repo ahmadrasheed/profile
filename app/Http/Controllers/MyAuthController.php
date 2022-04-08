@@ -20,8 +20,11 @@ class MyAuthController extends Controller
      */
 
 
-    public function login(){
-        $user=User::first();
+    public function login($fcmToken=null){
+        //if(is_null($fcmToken))
+        //dd("null token");
+        //dd($token);
+        //$user=User::first();
        
         //dd($user->teacher->fname);
         //this code to hash all password for users
@@ -31,11 +34,12 @@ class MyAuthController extends Controller
         //     $user->save();
         // }
         
-        return view('auth.login');
+        return view('auth.login',['fcmToken'=>$fcmToken]);
      }
 
-    public function authenticate(Request $request)
+    public function authenticate(Request $request,$fcmToken=null)
     {
+        //dd("fromAutneticate"+$token);
         $credentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
@@ -43,6 +47,11 @@ class MyAuthController extends Controller
         //dd($credentials);
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
+            //dd($fcmToken);
+            $user=Auth::user();
+            $user->fcmToken=$fcmToken;
+            $user->save();
+
             //dd('1');
             if(Auth::user()->role==1){
                 return redirect()->route('teachers.index');

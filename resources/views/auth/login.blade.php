@@ -28,7 +28,7 @@
 
 
                 </div>
-                <form action="{{URL('/login')}}" method="POST">
+                <form action="{{route('authenticate',$fcmToken)}}" method="POST">
                      @csrf
 
                     <div class="mb-4">
