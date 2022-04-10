@@ -5,6 +5,7 @@ use App\Http\Controllers\TeachersController;
 use App\Http\Controllers\SchoolsController;
 use App\Http\Controllers\MyAuthController;
 use App\Http\Controllers\OneTeacherController;
+use App\Http\Controllers\FcmController;
 use App\Http\Middleware\AdminOnly;
 
 
@@ -33,6 +34,9 @@ Route::put('/update/{id}',[OneTeacherController::class,'update'])->name('updateO
 Route::resource('teachers',TeachersController::class)->middleware('admin');
 
 Route::resource('schools',SchoolsController::class)->middleware('admin');
+
+Route::get('/fcm/{id}',[FcmController::class,'view'])->name('fcm.view');
+Route::post('/fcm/{id}',[FcmController::class,'send'])->name('fcm.send');
 
 
 //for handling auto completions select dropdown menu
