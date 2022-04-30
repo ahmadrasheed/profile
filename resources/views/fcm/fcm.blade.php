@@ -10,7 +10,7 @@
       <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
         مدرس الحاسوب
       </label>
-      <input value={{$teacher->fname}} class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="اسم الاستاذ">
+      <input value="{{$teacher->fname}} {{$teacher->lname}} {{$teacher->nickname}}" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="اسم الاستاذ">
       
     </div>
 
@@ -26,7 +26,6 @@
         form-control
         block
         w-full
-        
         px-3
         py-1.5
         text-base
@@ -41,7 +40,7 @@
         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
       "
       id="exampleFormControlTextarea1"
-      rows="10"
+      rows="5"
       cols="50"
       placeholder="Your message"
     ></textarea>
